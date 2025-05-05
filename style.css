@@ -1,0 +1,213 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --danger-color: #f72585;
+    --success-color: #4cc9f0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.15);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.2);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  /* Estilos generales */
+  body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #1d63cc 0%, #020202 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      color: var(--dark-color);
+      line-height: 1.6;
+  }
+  
+  /* Contenedor principal */
+  .contenedor-calculadora {
+      width: 100%;
+      max-width: 320px;
+      background: #81e60f;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(5px);
+      border: none;
+      transition: var(--transition);
+  }
+  
+  .contenedor-calculadora:hover {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  }
+  
+  /* Título */
+  .titulo {
+      text-align: center;
+      color: var(--primary-color);
+      margin: 0 0 25px 0;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      text-shadow: var(--shadow-sm);
+  }
+  
+  /* Pantalla de resultado */
+  .pantalla {
+      margin-bottom: 25px;
+      position: relative;
+  }
+  
+  .campo-resultado {
+      width: 100%;
+      
+      font-size: 2rem;
+      font-weight: 300;
+      text-align: right;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1), 
+                  inset -2px -2px 5px rgba(255,255,255,0.5);
+      backdrop-filter: blur(5px);
+      color: var(--dark-color);
+      transition: var(--transition);
+  }
+  
+  .campo-resultado:focus {
+      outline: 2px solid var(--accent-color);
+      background: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Contenedor de botones  */
+  .botones {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+  }
+  
+  /* Estilos para botones */
+  button {
+      padding: 18px 0;
+      font-size: 1.25rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      color: rgb(7, 7, 7);
+      box-shadow: var(--shadow-sm);
+  }
+  
+  button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      opacity: 0;
+      transition: opacity 0.3s;
+  }
+  
+  button:hover::after {
+      opacity: 1;
+  }
+  
+  button:active {
+      transform: scale(0.96);
+      box-shadow: var(--shadow-sm);
+  }
+  
+  /* Botones de números  */
+  .boton-numero {
+      background: var(--light-color);
+      color: var(--dark-color);
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.1), 
+                 -3px -3px 6px rgba(255,255,255,0.8);
+  }
+  
+  .boton-numero:hover {
+      background: #3670aa;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.1), 
+                 -2px -2px 4px rgba(255,255,255,0.8);
+  }
+  
+  /* Botones de operadores */
+  .boton-operador {
+      background: var(--primary-color);
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+  }
+  
+  .boton-operador:hover {
+      background: var(--secondary-color);
+  }
+  
+  /* Botón de limpiar */
+  .boton-limpiar {
+      background: var(--danger-color);
+  }
+  
+  .boton-limpiar:hover {
+      background: #e3175a;
+  }
+  
+  /* Botón igual  */
+  .boton-igual {
+      grid-column: span 4;
+      background: linear-gradient(135deg, var(--success-color) 0%, var(--accent-color) 100%);
+      padding: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+  }
+  
+  .boton-igual:hover {
+      background: linear-gradient(135deg, #0d0d0e 0%, #080808 100%);
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+  }
+  
+  /* Efecto ripple al hacer clic */
+  @keyframes ripple {
+      to {
+          transform: scale(4);
+          opacity: 0;
+      }
+  }
+  
+  .ripple {
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .ripple-effect {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+      transform: scale(0);
+      animation: ripple 600ms linear;
+      pointer-events: none;
+  }
+  
+  /* Media queries para responsividad */
+  @media (max-width: 400px) {
+      .contenedor-calculadora {
+          padding: 15px;
+          border-radius: 15px;
+      }
+      
+      .campo-resultado {
+          font-size: 1.5rem;
+          padding: 12px 15px;
+      }
+      
+      button {
+          padding: 15px 0;
+          font-size: 1.1rem;
+      }
+  }
